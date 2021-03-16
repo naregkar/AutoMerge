@@ -44,7 +44,13 @@ jobs:
                   echo 'PR Title does not comply with the required pattern.'                  
                   exit 1
                 fi
-    
+                
+      - name: PR Title Check step failed
+        if: ${{ failure() }} 
+        run: |
+              echo 'failed'
+      
+      
       - name: Read version from Jira Issue
         run : |
                restApiGET=$(curl --request GET \
