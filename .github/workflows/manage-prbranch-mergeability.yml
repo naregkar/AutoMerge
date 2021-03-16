@@ -108,6 +108,10 @@ jobs:
                 exit 1
               fi
 
+      - name: Mergeability failed
+        if: ${{ failure() }} 
+        run: |
+              echo 'failed'
 
       - name: Read Jira Issue Status
         id: retrieveJiraStatus    
@@ -137,3 +141,9 @@ jobs:
                  echo "Jira Issue's status is not Ready to Merge. Cannot Merge to master."
                  exit 1
                fi
+
+
+      - name: Jira Status failed
+        if: ${{ failure() }} 
+        run: |
+              echo 'failed'
