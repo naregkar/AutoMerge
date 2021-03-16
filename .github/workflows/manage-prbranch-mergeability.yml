@@ -44,12 +44,7 @@ jobs:
                   echo 'PR Title does not comply with the required pattern.'                  
                   exit 1
                 fi
-                
-      - name: PR Title Check step failed
-        if: ${{ failure() }} 
-        run: |
-              echo 'failed'
-      
+                     
       
       - name: Read version from Jira Issue
         run : |
@@ -108,11 +103,6 @@ jobs:
                 exit 1
               fi
 
-      - name: Mergeability failed
-        if: ${{ failure() }} 
-        run: |
-              echo 'failed'
-
       - name: Read Jira Issue Status
         id: retrieveJiraStatus    
         run: |
@@ -141,9 +131,3 @@ jobs:
                  echo "Jira Issue's status is not Ready to Merge. Cannot Merge to master."
                  exit 1
                fi
-
-
-      - name: Jira Status failed
-        if: ${{ failure() }} 
-        run: |
-              echo 'failed'
